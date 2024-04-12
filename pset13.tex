@@ -32,7 +32,15 @@ Each of the problems below is similar in some way to some worked example in the 
   \end{itemize}
 
   \begin{solution}
-    % Enter your solution here.
+    The elements of $S$ can be expressed as $a_n = 2^n - 1, n \ge 0$.
+
+    Proof by structural induction
+    
+    \underline{Basis step}: The case for $n = 0$ proceeds trivially.
+    
+    \underline{Inductive step}: Given $k\in S$, the next term is $2k+1$.\\
+    $k=2^m-1$ for some integer $m$.\\
+    Then the next term is, $2k+1= 2(2^m-1)+1 = 2^{m+1} -2 + 1 =2^{m+1} -1.\qquad\square$ 
   \end{solution}
   
 \question Let $\lambda$ denote the empty string. Let $A$ be any finite nonempty set. A \textit{palindrome} over $A$ can be defined as a string that reads the same forward as backward. For example, ``mom'' and ``dad'' are palindromes over the English alphabet.
@@ -48,7 +56,21 @@ Each of the problems below is similar in some way to some worked example in the 
   Recall that a set-equality proof requires to show that both sides are subsets of each other. That is, you will have to show that an element of $S$ is a palindrome over $A$, and that any palindrome over $A$ is present in $S$.
 
   \begin{solution}
-    % Enter your solution here.
+    Let $P$ be the set of all palindromes over $A$.
+
+    Proof by structural induction that $S\subseteq P$:
+
+    \underline{Basis Step}: Both base cases are palindromes.
+
+    \underline{Inductive Step}: If $x$ is a palindrome, so is $axa.\qquad\square$
+
+    Proof by strong induction over the length, $n$, of a palindrome where $n\ge0$ that $P\subseteq S$:
+    
+    \underline{Basis Step}: The cases for $n=0$ and $n=1$ are defined in the basis step of the definition of $S$.
+
+    \underline{Inductive Step}: A palindrome, $p_{k+1}$, of length $k+1$ can be expressed as $ap_{k-1}a$ where $a\in A$ and $p_{k-1}$ is a palindrome of length $k-1$.\\
+    By IH, $p_{k-1}$ is a member of $S$.\\
+    Then, by the recursive step of the definition of $S$, so is $p_{k+1}.\qquad \square$
   \end{solution}
 
 \question
@@ -58,10 +80,21 @@ Each of the problems below is similar in some way to some worked example in the 
   \item Induction: If $(u, v) \in G$, then $(u, v - u) \in G$ and $(u - v, v) \in G$.
   \end{itemize}
 
-  Prove that for any $(x, y) \in G$, $c|x$ and $c|y$.
+  Prove that for any $(x, y) \in G$, $c\mid x$ and $c\mid y$.
 
   \begin{solution}
-    % Enter your solution here.
+    Proof by structural induction that $(x, y) \in G \implies c\mid x \land c\mid y$.
+    
+    \underline{Basis Step}: True by definition of $a, b, c$.
+
+    \underline{Inductive Step}: As $u,v\in G$, we know that $u=xc$ and $v=yc$ for some integers, $x$ and $y$.\\
+    Case 1: $(u, v-u)$\\
+    $u$ is already divisible by $c$.\\
+    $v-u = (y-x)c$. So $v-u$ is also divisible by $c$.
+    
+    Case 2: $(u-v, v)$\\
+    $v$ is already divisible by $c$.\\
+    $u-v = (x-y)c$. So $u-v$ is also divisible by $c.\qquad\square$
   \end{solution}
 
   
@@ -80,7 +113,19 @@ Each of the problems below is similar in some way to some worked example in the 
   \[ R(\mu\nu) = R(\nu)R(\mu). \]
 
   \begin{solution}
-    % Enter your solution here.
+    Proof by structural induction that for all $\mu, \nu \in S$,  $ R(\mu\nu) = R(\nu)R(\mu).$
+
+    \underline{Basis Step}: \textit{wlog} let $\mu=a, \nu=b$.\\
+    Then $R(ab) = R(b)R(a) = ba$.\\
+    The basis step holds.
+
+    \underline{Inductive Step}: Let $\mu=x_1x_2\ldots x_n$ and $\nu=y_1y_2\ldots y_m$.\\
+    Then
+    \begin{align*}
+      R(\mu\nu) &= R(x_1x_2\ldots x_ny_1y_2\ldots y_m)\\
+                & = R(y_1y_2\ldots y_m)R(x_1x_2\ldots x_n)\\
+                & =y_m\ldots y_1x_n\ldots x_1 \qquad\qquad\square
+    \end{align*}
   \end{solution}
   
 \end{questions}
